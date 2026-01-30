@@ -28,7 +28,7 @@ export function Header() {
         <div className="flex items-center">
           <Button
             as="a"
-            href={`tel:${CONTACT_INFO.phone}`}
+            href="#contact"
             variant="secondary"
             size="sm"
           >

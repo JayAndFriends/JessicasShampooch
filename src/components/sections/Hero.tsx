@@ -36,8 +36,8 @@ export function Hero() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button as="a" href="#testimonials" variant="primary" size="lg">
-                See Our Happy Clients
+              <Button as="a" href="#contact" variant="primary" size="lg">
+                Book Appointment 📅
               </Button>
               <Button as="a" href="#services" variant="outline" size="lg">
                 Learn More
