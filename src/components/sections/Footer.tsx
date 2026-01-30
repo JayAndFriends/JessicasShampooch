@@ -23,28 +23,11 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           {/* Brand */}
           <div className="space-y-6">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-pink-primary rounded-full flex items-center justify-center text-white">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-              </div>
-              <span className="text-xl font-bold">
-                Jessica's <span className="text-pink-primary">Shampooch</span>
-              </span>
-            </div>
+            <img
+              src="/logo.png"
+              alt={APP_NAME}
+              className="h-32 w-auto object-contain"
+            />
             <p className="text-zinc-400 leading-relaxed">
               Premium pet grooming in Hermitage, PA. Dedicated to comfort,
               style, and stress-free care for your furry family members.
