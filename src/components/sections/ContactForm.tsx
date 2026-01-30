@@ -1,11 +1,24 @@
-import { Container, Button, Input, Textarea } from '@components/ui';
-import { useContactForm } from '@hooks/useContactForm';
+import { Container } from '@components/ui';
 import { CONTACT_INFO } from '@constants/index';
 import { formatPhoneNumber } from '@utils/api';
+import { useEffect } from 'react';
 
 export function ContactForm() {
-  const { formData, status, errors, handleChange, handleSubmit, resetForm } =
-    useContactForm();
+  useEffect(() => {
+    // Load GoHighLevel form embed script
+    const script = document.createElement('script');
+    script.src = 'https://link.msgsndr.com/js/form_embed.js';
+    script.type = 'text/javascript';
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      // Cleanup script on unmount
+      if (document.body.contains(script)) {
+        document.body.removeChild(script);
+      }
+    };
+  }, []);
 
   return (
     <section id="contact" className="py-24 bg-white">
@@ -24,20 +37,19 @@ export function ContactForm() {
             </svg>
           </div>
 
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left column - Info */}
-            <div className="space-y-8">
+          <div className="relative z-10 space-y-12">
+            {/* Header Section */}
+            <div className="text-center max-w-3xl mx-auto space-y-6">
               <h2 className="text-4xl md:text-6xl font-bold leading-tight">
-                Ready to give your pet the <br />
-                <span className="text-zinc-900">ultimate spa day?</span>
+                Book Your Pet's <br />
+                <span className="text-zinc-900">Spa Day</span>
               </h2>
               <p className="text-lg md:text-xl text-white/90 leading-relaxed">
-                Fill out the form to request an appointment. Somebody from the
-                Shampooch team will get back to you to confirm your slot at
-                Hermitage's favorite grooming salon.
+                Choose your preferred date and time below. Pick a slot that works
+                for you, and we'll confirm your appointment!
               </p>
-              <div className="pt-4 flex flex-col space-y-4">
-                <div className="flex items-center space-x-4">
+              <div className="flex flex-col md:flex-row justify-center gap-6 pt-4">
+                <div className="flex items-center space-x-3">
                   <div className="bg-white/20 p-3 rounded-full flex-shrink-0">
                     <svg
                       className="w-6 h-6"
@@ -56,12 +68,12 @@ export function ContactForm() {
                   </div>
                   <a
                     href={`tel:${CONTACT_INFO.phone}`}
-                    className="font-bold text-xl hover:underline"
+                    className="font-bold text-lg hover:underline"
                   >
                     {formatPhoneNumber(CONTACT_INFO.phone)}
                   </a>
                 </div>
-                <div className="flex items-center space-x-4">
+                <div className="flex items-center space-x-3">
                   <div className="bg-white/20 p-3 rounded-full flex-shrink-0">
                     <svg
                       className="w-6 h-6"
@@ -78,110 +90,38 @@ export function ContactForm() {
                       />
                     </svg>
                   </div>
-                  <span className="font-bold">{CONTACT_INFO.address}</span>
+                  <span className="font-bold text-lg">{CONTACT_INFO.address}</span>
                 </div>
               </div>
             </div>
 
-            {/* Right column - Form */}
-            <div className="bg-white rounded-[2rem] p-8 shadow-xl text-zinc-900">
-              {status === 'success' ? (
-                <div className="text-center py-12 space-y-4">
-                  <div className="w-20 h-20 bg-green-100 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <svg
-                      className="w-10 h-10"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="3"
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                  </div>
-                  <h3 className="text-2xl font-bold">Request Sent!</h3>
-                  <p className="text-zinc-600">
-                    Jessica will contact you shortly to confirm your
-                    appointment. Wags and kisses!
-                  </p>
-                  <button
-                    onClick={resetForm}
-                    className="text-pink-primary font-bold hover:underline"
-                  >
-                    Send another request
-                  </button>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-4" noValidate>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <Input
-                      label="Your Name"
-                      type="text"
-                      placeholder="e.g. Mary McDermott"
-                      value={formData.name}
-                      onChange={e => handleChange('name', e.target.value)}
-                      error={errors.name}
-                      required
-                    />
-                    <Input
-                      label="Phone Number"
-                      type="tel"
-                      placeholder="(724) 000-0000"
-                      value={formData.phone}
-                      onChange={e => handleChange('phone', e.target.value)}
-                      error={errors.phone}
-                      required
-                    />
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <Input
-                      label="Pet's Name"
-                      type="text"
-                      placeholder="e.g. Buster"
-                      value={formData.petName}
-                      onChange={e => handleChange('petName', e.target.value)}
-                      error={errors.petName}
-                      required
-                    />
-                    <Input
-                      label="Breed"
-                      type="text"
-                      placeholder="e.g. Golden Retriever"
-                      value={formData.breed}
-                      onChange={e => handleChange('breed', e.target.value)}
-                      error={errors.breed}
-                      required
-                    />
-                  </div>
-                  <Textarea
-                    label="Special Notes (Optional)"
-                    rows={3}
-                    placeholder="Tell us about your pet's needs..."
-                    value={formData.message}
-                    onChange={e => handleChange('message', e.target.value)}
-                    error={errors.message}
-                  />
+            {/* Calendar Widget */}
+            <div className="bg-white rounded-[2rem] p-4 md:p-8 shadow-xl">
+              <iframe
+                src="https://api.leadconnectorhq.com/widget/booking/DDM8Fk99495sLFhZ36AI"
+                style={{
+                  width: '100%',
+                  border: 'none',
+                  overflow: 'hidden',
+                  minHeight: '800px',
+                }}
+                scrolling="no"
+                id="DDM8Fk99495sLFhZ36AI_1769749460806"
+                title="Book Your Pet's Spa Day"
+              />
+            </div>
 
-                  <Button
-                    type="submit"
-                    variant="secondary"
-                    size="lg"
-                    fullWidth
-                    isLoading={status === 'loading'}
-                  >
-                    {status === 'loading' ? 'Sending...' : 'Book Appointment 🐾'}
-                  </Button>
-
-                  {status === 'error' && !Object.keys(errors).length && (
-                    <p className="text-red-500 text-sm text-center font-medium">
-                      Something went wrong. Please try calling us directly!
-                    </p>
-                  )}
-                </form>
-              )}
+            {/* Quick Help Text */}
+            <div className="text-center text-white/80 text-sm">
+              <p>
+                Having trouble booking? Call us at{' '}
+                <a
+                  href={`tel:${CONTACT_INFO.phone}`}
+                  className="underline font-bold hover:text-white"
+                >
+                  {formatPhoneNumber(CONTACT_INFO.phone)}
+                </a>
+              </p>
             </div>
           </div>
         </div>
