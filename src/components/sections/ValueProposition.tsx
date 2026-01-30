@@ -49,7 +49,7 @@ const values: ValuePropType[] = [
   {
     title: 'Personalized Care',
     description:
-      "Jessica treats every animal with individual attention, from specialized shampoos to specific styling requests that fit your pet's lifestyle.",
+      "Jessica and Shawna treat every animal with individual attention, from specialized shampoos to specific styling requests that fit your pet's lifestyle.",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"

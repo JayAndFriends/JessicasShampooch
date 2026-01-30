@@ -11,11 +11,11 @@ const trustBadges = [
   },
   {
     image: 'https://picsum.photos/id/1025/80/80',
-    alt: 'Animal Safety',
-    label: 'Pet First Aid',
+    alt: 'Professional Groomer',
+    label: 'Professional Groomer',
   },
   {
-    image: 'https://picsum.photos/id/1020/80/80',
+    image: 'https://picsum.photos/id/1074/80/80',
     alt: 'Local Business',
     label: 'Local Hermitage',
   },
