@@ -6,8 +6,8 @@ const delayClasses = ['delay-200', 'delay-400', 'delay-600'];
 const trustBadges = [
   {
     image: 'https://picsum.photos/id/1062/80/80',
-    alt: 'Certified Groomer',
-    label: 'Certified Expert',
+    alt: 'Experienced Care',
+    label: 'Experienced Care',
   },
   {
     image: 'https://picsum.photos/id/1025/80/80',
@@ -15,7 +15,7 @@ const trustBadges = [
     label: 'Professional Groomer',
   },
   {
-    image: 'https://picsum.photos/id/1074/80/80',
+    image: 'https://picsum.photos/id/1123/80/80',
     alt: 'Local Business',
     label: 'Local Hermitage',
   },
