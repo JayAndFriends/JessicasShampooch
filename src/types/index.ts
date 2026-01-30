@@ -15,6 +15,7 @@ export interface FormData {
   name: string;
   phone: string;
   petName: string;
+  breed: string;
   message: string;
 }
 

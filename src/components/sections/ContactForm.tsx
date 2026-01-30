@@ -136,15 +136,26 @@ export function ContactForm() {
                       required
                     />
                   </div>
-                  <Input
-                    label="Pet's Name & Breed"
-                    type="text"
-                    placeholder="e.g. Buster (Golden Retriever)"
-                    value={formData.petName}
-                    onChange={e => handleChange('petName', e.target.value)}
-                    error={errors.petName}
-                    required
-                  />
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <Input
+                      label="Pet's Name"
+                      type="text"
+                      placeholder="e.g. Buster"
+                      value={formData.petName}
+                      onChange={e => handleChange('petName', e.target.value)}
+                      error={errors.petName}
+                      required
+                    />
+                    <Input
+                      label="Breed"
+                      type="text"
+                      placeholder="e.g. Golden Retriever"
+                      value={formData.breed}
+                      onChange={e => handleChange('breed', e.target.value)}
+                      error={errors.breed}
+                      required
+                    />
+                  </div>
                   <Textarea
                     label="Special Notes (Optional)"
                     rows={3}

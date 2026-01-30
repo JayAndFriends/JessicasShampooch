@@ -15,6 +15,10 @@ export const contactFormSchema = z.object({
     .string()
     .min(2, 'Pet name must be at least 2 characters')
     .max(100, 'Pet name must be less than 100 characters'),
+  breed: z
+    .string()
+    .min(2, 'Breed must be at least 2 characters')
+    .max(100, 'Breed must be less than 100 characters'),
   message: z.string().max(500, 'Message must be less than 500 characters').optional(),
 });
 

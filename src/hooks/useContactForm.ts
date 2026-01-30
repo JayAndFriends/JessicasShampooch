@@ -17,6 +17,7 @@ const initialFormData: FormData = {
   name: '',
   phone: '',
   petName: '',
+  breed: '',
   message: '',
 };
 
