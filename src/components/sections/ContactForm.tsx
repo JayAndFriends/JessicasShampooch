@@ -32,9 +32,9 @@ export function ContactForm() {
                 <span className="text-zinc-900">ultimate spa day?</span>
               </h2>
               <p className="text-lg md:text-xl text-white/90 leading-relaxed">
-                Fill out the form to request an appointment. Jessica will get
-                back to you personally to confirm your slot at Hermitage's
-                favorite grooming salon.
+                Fill out the form to request an appointment. Somebody from the
+                Shampooch team will get back to you to confirm your slot at
+                Hermitage's favorite grooming salon.
               </p>
               <div className="pt-4 flex flex-col space-y-4">
                 <div className="flex items-center space-x-4">
