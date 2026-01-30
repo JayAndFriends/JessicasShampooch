@@ -15,7 +15,7 @@ const trustBadges = [
     label: 'Professional Groomer',
   },
   {
-    image: 'https://picsum.photos/id/1123/80/80',
+    image: 'https://picsum.photos/id/237/80/80',
     alt: 'Local Business',
     label: 'Local Hermitage',
   },
