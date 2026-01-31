@@ -3,7 +3,7 @@ import type { Testimonial, BusinessHours, ContactInfo } from '@types/index';
 export const APP_NAME = import.meta.env.VITE_APP_NAME || "Jessica's Shampooch";
 
 export const CONTACT_INFO: ContactInfo = {
-  phone: import.meta.env.VITE_PHONE_NUMBER || '+17243423647',
+  phone: import.meta.env.VITE_PHONE_NUMBER || '+12344301210',
   address: import.meta.env.VITE_ADDRESS || '2005 Pine Hollow Blvd, Hermitage, PA 16148',
 };
 
